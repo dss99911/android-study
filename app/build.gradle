@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
+apply from: '../secret.gradle'
 
 android {
     compileSdkVersion 29
@@ -15,6 +16,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "SLACK_TOKEN", '"'+SLACK_TOKEN+'"'
     }
 
     buildTypes {
@@ -44,4 +47,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation("com.slack.api:slack-api-client:1.10.0")
+    implementation("com.slack.api:slack-api-model-kotlin-extension:1.10.0")
+    implementation("com.slack.api:slack-api-client-kotlin-extension:1.10.0")
 }

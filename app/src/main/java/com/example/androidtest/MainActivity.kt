@@ -1,18 +1,28 @@
 package com.example.androidtest
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import com.karumi.dexter.Dexter
+import android.os.Environment
+import android.widget.Button
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+
 
 class MainActivity : AppCompatActivity() {
+
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        android.Manifest.permission
-        Dexter.withContext(this)
-            .withPermission(permission)
-            .withListener(listener)
-            .check();
 
     }
+
+    fun initUi() {
+        findViewById<Button>(R.id.btn_location).setOnClickListener {
+            startActivity(Intent(this, LocationActivity::class.java))
+        }
+    }
+
+
 }
